@@ -1,1 +1,876 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuCont | Contabilidade Inteligente para Empresas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2C1FF0;
+            --primary-light: #5E17EB;
+            --accent: #E2FE52;
+            --bg-dark: #111111;
+            --bg-darker: #0A0A0A;
+            --text: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.3s ease;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--bg-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Navegação */
+        .top-banner {
+            background-color: var(--bg-darker);
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .top-banner-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .announcement {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .announcement .dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+
+        .blog-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .blog-link:hover {
+            opacity: 0.8;
+        }
+
+        .blog-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-mark {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            margin-right: 10px;
+            border-radius: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-secondary {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn {
+            background-color: white;
+            color: var(--bg-dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            min-height: 80vh;
+            position: relative;
+            padding: 8rem 0 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin-bottom: 5rem;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 3.5rem;
+            color: var(--text);
+        }
+
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-icon .dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .feature-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            transition: var(--transition);
+        }
+
+        .feature-link:hover {
+            opacity: 0.8;
+        }
+
+        .feature-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .benefits-section {
+            padding: 8rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .benefit-card {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .benefit-icon {
+            display: inline-flex;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            width: 36px;
+            height: 36px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .benefit-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .avenidas-section {
+            padding: 8rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .dual-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .dual-content-text {
+            max-width: 500px;
+        }
+
+        .dual-content-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .dual-content-text p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .dual-content-image {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .dual-content-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .testimonials-section {
+            padding: 8rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .testimonials-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            max-width: 500px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .testimonial-content {
+            color: var(--text);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #333;
+            margin-right: 1rem;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .cta-section {
+            padding: 8rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .footer {
+            padding: 5rem 0 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            max-width: 300px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--text);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-bottom a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--text);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 992px) {
+            .dual-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .dual-content-text {
+                max-width: 100%;
+            }
+
+            .testimonials-header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container top-banner-content">
+            <div class="announcement">
+                <div class="dot"></div>
+                <span>TuCont está no ar!</span>
+            </div>
+            <a href="#" class="blog-link">
+                Ler blog
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Navegação -->
+    <div class="container">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <div class="logo-mark"></div>
+                TuCont
+            </a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Características</a>
+                <a href="#" class="nav-link">Soluções</a>
+                <a href="#" class="nav-link">Empresa</a>
+                <a href="#" class="nav-link">Preços</a>
+                <a href="#" class="nav-link">Agende uma demonstração</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="#" class="btn-secondary">Entrar</a>
+                <a href="#" class="btn">Começar</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content fade-in">
+                <h1>O serviço de contabilidade mais rápido para empresas</h1>
+                <a href="#" class="btn">Começar</a>
+            </div>
+
+            <div class="hero-features">
+                <div class="feature-item fade-in delay-1">
+                    <div class="feature-icon">
+                        <div class="dot"></div>
+                        <span class="feature-title">Deixe conosco</span>
+                    </div>
+                    <p class="feature-description">Oferecemos contabilidade especializada e nos comunicamos via Slack</p>
+                    <a href="#" class="feature-link">
+                        Saber mais
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="feature-item fade-in delay-2">
+                    <div class="feature-icon">
+                        <div class="dot"></div>
+                        <span class="feature-title">Automação contábil de IA</span>
+                    </div>
+                    <p class="feature-description">Nossa automação de IA garante velocidade extremamente rápida com precisão incomparável</p>
+                    <a href="#" class="feature-link">
+                        Saber mais
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-image fade-in delay-3">
+                <img src="/api/placeholder/1200/600" alt="Dashboard da plataforma TuCont">
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <h2 class="section-title">Por que escolher a TuCont?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Compliance total</h3>
+                    <p>Garantimos que seu negócio esteja sempre em conformidade com todas as obrigações fiscais e contábeis.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Economia de tempo</h3>
+                    <p>Nossa tecnologia automatiza processos repetitivos, liberando seu tempo para focar no crescimento do seu negócio.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Segurança máxima</h3>
+                    <p>Seus dados contábeis são protegidos pelos mais avançados protocolos de segurança e criptografia.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 3v16h16"></path>
+                            <path d="M16 17l5-5-5-5"></path>
+                            <path d="M18.5 12H5"></path>
+                        </svg>
+                    </div>
+                    <h3>Insights estratégicos</h3>
+                    <p>Transformamos dados contábeis em informações valiosas para tomada de decisões mais inteligentes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avenidas Section -->
+        <section class="avenidas-section">
+            <div class="dual-content">
+                <div class="dual-content-text">
+                    <h2>Avenida Legal: Contabilidade que você nem percebe</h2>
+                    <p>Nossa esteira tecnológica gerencia todos os aspectos contábeis e fiscais do seu negócio com precisão e agilidade. Enquanto nossa IA processa documentos e realiza classificações, nossos especialistas garantem que tudo esteja em ordem.</p>
+                    <a href="#" class="btn">Saiba mais</a>
+                </div>
+                <div class="dual-content-image">
+                    <img src="/api/placeholder/600/400" alt="Avenida Legal">
+                </div>
+            </div>
+        </section>
+
+        <section class="avenidas-section">
+            <div class="dual-content">
+                <div class="dual-content-image">
+                    <img src="/api/placeholder/600/400" alt="Avenida de Negócios">
+                </div>
+                <div class="dual-content-text">
+                    <h2>Avenida de Negócios: Impulsione seu crescimento</h2>
+                    <p>Através da Jornada Empresarial, fornecemos ferramentas estratégicas, frameworks exclusivos e conexões valiosas para impulsionar o crescimento do seu negócio. Transformamos contabilidade em vantagem competitiva.</p>
+                    <a href="#" class="btn">Conheça a Jornada</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="testimonials-header">
+                <h2>O que nossos clientes estão dizendo</h2>
+                <a href="#" class="btn">Ver todos</a>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "A TuCont transformou nossa gestão contábil. Economizamos mais de 15 horas por semana que antes gastávamos com questões fiscais, e agora temos insights que realmente ajudam nas decisões estratégicas."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/100/100" alt="Avatar de Fernando Silva">
+                        </div>
+                        <div class="author-info">
+                            <h4>Fernando Silva</h4>
+                            <p>CEO, TechFusion</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Os frameworks da Jornada Empresarial nos ajudaram a identificar oportunidades fiscais que reduziram nossa carga tributária em 22%. O retorno sobre o investimento foi quase imediato."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/100/100" alt="Avatar de Ana Costa">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ana Costa</h4>
+                            <p>CFO, Growth Ventures</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "O marketplace da TuCont nos conectou com parceiros estratégicos que aceleraram nossa expansão internacional. A plataforma vai muito além da contabilidade tradicional."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/100/100" alt="Avatar de Marcelo Souza">
+                        </div>
+                        <div class="author-info">
+                            <h4>Marcelo Souza</h4>
+                            <p>Fundador, Global Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Transforme sua contabilidade hoje</h2>
+                <p>Junte-se a centenas de empresas visionárias que já transformaram sua gestão contábil em uma poderosa alavanca de crescimento.</p>
+                <a href="#" class="btn">Agende uma demonstração</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo">
+                        <div class="logo-mark"></div>
+                        TuCont
+                    </a>
+                    <p>A plataforma de contabilidade inteligente que combina tecnologia avançada com expertise humana para transformar a gestão do seu negócio.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Plataforma</h3>
+                    <ul>
+                        <li><a href="#">Avenida Legal</a></li>
+                        <li><a href="#">Avenida de Negócios</a></li>
+                        <li><a href="#">Jornada Empresarial</a></li>
+                        <li><a href="#">Marketplace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Empresa</h3>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Central de ajuda</a></li>
+                        <li><a href="#">Documentação</a></li>
+                        <li><a href="#">Para Contadores</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2025 TuCont. Todos os direitos reservados.</div>
+                <div class="social-links">
+                    <a href="#">Termos</a>
+                    <a href="#">Privacidade</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animação de elementos ao scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                fadeInObserver.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
